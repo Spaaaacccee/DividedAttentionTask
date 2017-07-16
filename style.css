@@ -76,3 +76,19 @@ body.r #modal {
 body.s #getready {
     display:none;
 }
+
+button {
+    margin-top:20px;
+    background:#eee;
+    border:none;
+    padding:10px 30px;
+    font-family: inherit;
+
+}
+
+img {
+    position: relative;
+    height: 10%;
+    left: 50%;
+    transform: translateX(-50%)
+}

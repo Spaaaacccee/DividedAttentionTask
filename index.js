@@ -1,5 +1,8 @@
 (function () {
 
+    var points = 0;
+    var timeStart;
+
     function generateRandomNumber() {
         var min = -0.1,
             max = 0.1,
@@ -77,7 +80,11 @@
             s.circles[0].innerHTML = s.words[s.index];
             s.circles[1].innerHTML = s.numbers[s.index];
             s.circles[2].style.backgroundPositionY = s.index * 200 + "px"
-            s.index = (s.index >= s.numbers.length - 1) ? 0 : s.index + 1
+            if (s.index == s.words.length) {
+                end()
+            } else {
+                s.index++
+            }
         }
         s.step();
         $.extend(this, obj);
@@ -96,6 +103,7 @@
     }
 
     function start() {
+        timeStart = Date.now();
         document.body.classList.add("s");
         new sphere({
             HTML: $("#s1")[0]
@@ -117,18 +125,38 @@
     }
 
     $(window).keypress(function (e) {
-        if (e.keyCode === 0 || e.keyCode === 32) {
+        if (e.keyCode === 0 || e.keyCode === 32 && !$(document.body).hasClass("e")) {
             e.preventDefault()
+            if (c.numbers[c.index] == c.shapeSides[c.index]) {
+                points++
+            }
             c.step()
         }
     })
 
     $(document).keypress(function (e) {
-        if (e.which == 13) {
+        if (e.which == 13 && !$(document.body).hasClass("e")) {
+
             e.preventDefault()
+            if (c.numbers[c.index] !== c.shapeSides[c.index]) {
+                points++
+            }
             c.step()
         }
     });
 
+    function end() {
+        document.body.classList.add("e");
+        var elapsed = (Date.now() - timeStart);
+        var eString = Math.floor(elapsed / 60000) + " minutes and " + (elapsed / 1000 )%60+ " seconds";
+        $("#getready div")[0].innerHTML = "<b>You have gotten " + points + " out 10 correct. Your time is " + eString + "</b>"
+        document.body.classList.remove("s");
+        var a = document.createElement("button")
+        a.textContent = "Retry"
+        a.onclick = function () {
+            window.location.reload(false);
+        }
+        $("#getready")[0].appendChild(a);
+    }
 
 })()
