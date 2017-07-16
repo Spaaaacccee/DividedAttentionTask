@@ -125,7 +125,7 @@
     }
 
     $(window).keypress(function (e) {
-        if (e.keyCode === 0 || e.keyCode === 32 && !$(document.body).hasClass("e")) {
+        if (e.keyCode === 0 || e.keyCode === 32 && $(document.body).hasClass("s")) {
             e.preventDefault()
             if (c.numbers[c.index-1] == c.shapeSides[c.index-1]) {
                 points++
@@ -135,7 +135,7 @@
     })
 
     $(document).keypress(function (e) {
-        if (e.which == 13 && !$(document.body).hasClass("e")) {
+        if (e.which == 13 && $(document.body).hasClass("s")) {
 
             e.preventDefault()
             if (c.numbers[c.index-1] !== c.shapeSides[c.index-1]) {
