@@ -89,7 +89,7 @@
         this.circles = $(".sphere");
         this.words = ["Cat", "chair", "tree", "house", "eat", "high", "land", "kite", "out", "win"];
         this.numbers = [3, 7, 4, 5, 9, 8, 5, 10, 6, 4];
-        this.shapeSides = [3, 6, 4, 5, 3, 8, 10, 5, 4];
+        this.shapeSides = [3, 6, 4, 5, 3, 8, 4, 10, 5, 4];
         this.step = function () {
             s.circles[0].innerHTML = s.words[s.index];
             s.circles[1].innerHTML = s.numbers[s.index];
