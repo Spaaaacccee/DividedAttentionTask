@@ -88,13 +88,13 @@
         this.index = 0;
         this.circles = $(".sphere");
         this.words = ["Cat", "chair", "tree", "house", "eat", "high", "land", "kite", "out", "win"];
-        this.numbers = [3, 7, 4, 5, 9, 8, 5, 9, 6, 4];
-        this.shapeSides = [3, 6, 4, 5, 3, 8, 9, 5, 4];
+        this.numbers = [3, 7, 4, 5, 9, 8, 5, 10, 6, 4];
+        this.shapeSides = [3, 6, 4, 5, 3, 8, 10, 5, 4];
         this.step = function () {
             s.circles[0].innerHTML = s.words[s.index];
             s.circles[1].innerHTML = s.numbers[s.index];
-            s.circles[2].innerHTML = s.shapeSides[s.index];
-            s.index = (s.index >= s.numbers.length) ?  0 : s.index + 1
+            s.circles[2].style.backgroundPositionY = s.index*100 + "px"
+            s.index = (s.index >= s.numbers.length - 1) ?  0 : s.index + 1
         }
         this.run = function () {
             setInterval(s.step, 3000)
