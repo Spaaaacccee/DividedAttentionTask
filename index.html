@@ -1,22 +1,47 @@
 <html>
+
 <head>
     <title>
-    Divided Attention Task
+        Divided Attention Task
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
-    <body>
-        <div id="container">
-            <div class="sphere" id="s1">
-            </div>
-            <div class="sphere" id="s2">
-            </div>
-            <div class="sphere" id="s3">
-            </div>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
+</head>
+
+<body>
+    <div id="container">
+        <div class="sphere" id="s1">
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-        <script src="index.js">
-        </script>
-    </body>
+        <div class="sphere" id="s2">
+        </div>
+        <div class="sphere" id="s3">
+        </div>
+    </div>
+
+    <div id="getready">
+        <div>
+            <b>Get ready</b>
+        </div>
+    </div>
+
+    <div id="modal">
+        <div>
+            <b>You are about to complete a divided attention task as part of a sleep questionnaire.</b>
+            <br> Please pay close attention to the following instructions. There will be three bouncing balls, each with a stimulus inside of them. One of them will have a shape, another will have a number, and another one will have a word. When the number in one of the circles corresponds to the number of sides in the shape of the other circle at that time, press the ‘spacebar’ key. Below is an example, in which the number four corresponds to the number of sides that a square has, as a square has four sides. -insert image of a circle with a square and a circle with a four- When the number in one of the circles does not correspond to the number of sides in the shape of the other circle at that time, press the ‘enter’ key. Below is an example, in which the number four does not correspond to the number of sides that a triangle has, as a triangle has three sides. -insert image of a circle with a triangle and a circle with a four- Continue doing this task until you are finished.
+        </div>
+        <button>OK</button>
+    </div>
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="animatedModal.js-master/animatedModal.min.js"></script>
+    <script src="index.js">
+
+
+    </script>
+</body>
+
 </html>

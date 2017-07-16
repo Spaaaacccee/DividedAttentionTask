@@ -10,7 +10,7 @@
     var sphere = function (obj) {
 
         var s = this;
-        this.r = 50;
+        this.r = 100;
         this.container = {
             x: 0,
             y: 0,
@@ -47,8 +47,8 @@
             y: innerHeight / 2
         }
         this.applyLocation = function () {
-            s.HTML.style.top = (s.location.y - 50) + "px";
-            s.HTML.style.left = (s.location.x - 50) + "px";
+            s.HTML.style.top = (s.location.y - s.r) + "px";
+            s.HTML.style.left = (s.location.x - s.r) + "px";
         };
         this.vectors = {
             x: 3,
@@ -64,23 +64,6 @@
         s.run();
     }
 
-    new sphere({
-        HTML: $("#s1")[0]
-    })
-    new sphere({
-        HTML: $("#s2")[0],
-        vectors: {
-            x: -4,
-            y: 2.5
-        }
-    })
-    new sphere({
-        HTML: $("#s3")[0],
-        vectors: {
-            x: -2,
-            y: -5
-        }
-    })
 
 
     var circleLogic = function (obj) {
@@ -93,19 +76,59 @@
         this.step = function () {
             s.circles[0].innerHTML = s.words[s.index];
             s.circles[1].innerHTML = s.numbers[s.index];
-            s.circles[2].style.backgroundPositionY = s.index*100 + "px"
-            s.index = (s.index >= s.numbers.length - 1) ?  0 : s.index + 1
-        }
-        this.run = function () {
-            setInterval(s.step, 3000)
+            s.circles[2].style.backgroundPositionY = s.index * 200 + "px"
+            s.index = (s.index >= s.numbers.length - 1) ? 0 : s.index + 1
         }
         s.step();
-        s.run();
         $.extend(this, obj);
     }
 
-    new circleLogic({})
+    var c = new circleLogic({})
 
+    onload = function () {
+        $("button").bind('click', function () {
+            document.body.classList.add("r");
+            setTimeout(
+                function () {
+                    start();
+                }, 3000)
+        })
+    }
+
+    function start() {
+        document.body.classList.add("s");
+        new sphere({
+            HTML: $("#s1")[0]
+        })
+        new sphere({
+            HTML: $("#s2")[0],
+            vectors: {
+                x: -4,
+                y: 2.5
+            }
+        })
+        new sphere({
+            HTML: $("#s3")[0],
+            vectors: {
+                x: -2,
+                y: -5
+            }
+        })
+    }
+
+    $(window).keypress(function (e) {
+        if (e.keyCode === 0 || e.keyCode === 32) {
+            e.preventDefault()
+            c.step()
+        }
+    })
+
+    $(document).keypress(function (e) {
+        if (e.which == 13) {
+            e.preventDefault()
+            c.step()
+        }
+    });
 
 
 })()
