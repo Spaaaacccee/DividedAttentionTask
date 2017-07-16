@@ -127,7 +127,7 @@
     $(window).keypress(function (e) {
         if (e.keyCode === 0 || e.keyCode === 32 && !$(document.body).hasClass("e")) {
             e.preventDefault()
-            if (c.numbers[c.index] == c.shapeSides[c.index]) {
+            if (c.numbers[c.index-1] == c.shapeSides[c.index-1]) {
                 points++
             }
             c.step()
@@ -138,7 +138,7 @@
         if (e.which == 13 && !$(document.body).hasClass("e")) {
 
             e.preventDefault()
-            if (c.numbers[c.index] !== c.shapeSides[c.index]) {
+            if (c.numbers[c.index-1] !== c.shapeSides[c.index-1]) {
                 points++
             }
             c.step()
